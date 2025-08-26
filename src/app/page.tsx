@@ -7,6 +7,7 @@ import {
 import { DateTime } from "@/components/ui/dateTime";
 import Image from "next/image";
 import { Author } from "./_components/author";
+import { P } from "@/components/ui/typography";
 
 export type Post = (typeof mockPosts)[number];
 
@@ -68,11 +69,12 @@ export default function Page() {
               <Author {...post.author} />
             </CardHeader>
             <CardContent>
-              {post.text}
+              <P>{post.text}</P>
               {/*{renderContentChildren(post.contentChildren)}*/}
             </CardContent>
             <CardFooter>
               <DateTime
+                className="text-muted-foreground"
                 timestamp={post.updatedAt}
                 formatOptions={{
                   year: "numeric",
@@ -84,22 +86,6 @@ export default function Page() {
           </Card>
         ))}
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          href="https://github.com/johnsoncodehk/volar-playground"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Image src="/github.svg" alt="GitHub" width={24} height={24} />
-        </a>
-        <a
-          href="https://twitter.com/johnsoncodehk"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Image src="/twitter.svg" alt="Twitter" width={24} height={24} />
-        </a>
-      </footer>
     </div>
   );
 }
